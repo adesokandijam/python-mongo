@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: user
+  name: user
+spec:
+  containers:
+  - image: 087380303747.dkr.ecr.eu-west-2.amazonaws.com/users_api:user_image_api
+    name: user
+    ports:
+      - containerPort: 8000
+    env:
+    - name: MONGO_PORT
+      value: "27017"
+    - name: MONGO_HOST
+      value: mongo
+
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

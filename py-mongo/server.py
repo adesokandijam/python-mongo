@@ -5,14 +5,16 @@ from bson.objectid import ObjectId
 import json
 import os
 
-MONGO_HOST = os.environ.get("MONGO_HOST")
-MONGO_PORT = os.environ.get("MONGO_PORT")
+MONGO_HOST = os.environ["MONGO_HOST"]
+MONGO_PORT = os.environ["MONGO_PORT"]
+print(MONGO_HOST)
+print(MONGO_PORT)
 
 try:
     mongo = pymongo.MongoClient(
         host= MONGO_HOST,
         port=MONGO_PORT,
-        serverSelectionTimeoutMS=1000
+        serverSelectionTimeoutMS=10000
     )
     mongo.server_info() # trigger exception if it cannot connect to database
     db = mongo.company
